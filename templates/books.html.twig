@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Books</h1>
+    <table class="books">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Author</td>
+                <td>Number of pages</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td><input type="text" class="title-{{ book.id }}" value="{{ book.title }}"></td>
+                    <td><input type="text" class="author-{{ book.id }}" value="{{ book.author }}"></td>
+                    <td><input type="text" class="numberOfPages-{{ book.id }}" value="{{ book.numberOfPages }}"></td>
+                    <td>
+                        <input type="button" class="button-edit" data-id="{{ book.id }}" data-class="Book" value="Edit">
+                        <input type="button" class="button-delete" data-id="{{ book.id }}" data-class="Book" value="Delete">
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="new-book">
+        <h3>New book: </h3>
+        <p>
+            <label>Title: <input type="text" class="title-new" value=""></label>
+            <label>Author: <input type="text" class="author-new" value=""></label>
+            <label>Number of Pages: <input type="text" class="numberOfPages-new" value=""></label>
+            <input type="button" class="button-add-new" data-class="Book" value="Add new book">
+        </p>
+    </div>
+
+    <p>
+        <a href="/">Back to main page</a>
+    </p>
+{% endblock %}

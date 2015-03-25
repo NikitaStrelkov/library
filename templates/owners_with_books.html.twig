@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Owners</h1>
+    <title>Give a book</title>
+    <form name="give-a-book-form" method="post" action="../ajax/give_a_book.php" class="give-a-book-form">
+        <p>
+            <label>
+                Choose a book:
+                <select name="book" class="owner">
+                    {% for book in books %}
+                        <option value="{{ book.id }}">{{ '"' ~ book.title ~ '"' ~ ' ' ~ book.author ~ ' with ' ~ book.numberOfPages ~ ' pages.' }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </p>
+        <p>
+            <label>
+                Choose new owner:
+                <select name="owner" class="owner">
+                    {% for owner in allOwners %}
+                        <option value="{{ owner.id }}">{{ owner.job ~ ' ' ~ owner.lastName ~ ' ' ~ owner.name }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </p>
+        <p>
+            <input type="submit" name="give-a-book-button" class="give-a-book-button" value="Give chosen book to new owner">
+        </p>
+    </form>
+    <title>Owners with their books</title>
+    {% for owner in ownersWithBooks %}
+        <article class="one-owner">
+            <div class="owners-info">{{ owner.job ~ ' ' ~ owner.lastName ~ ' ' ~ owner.name }} has books:</div>
+            <ul class="owners-books">
+                {% for book in owner.books %}
+                    <li>{{ '"' ~ book.title ~ '"' ~ ' ' ~ book.author ~ ' with ' ~ book.numberOfPages ~ ' pages.' }}</li>
+                {% endfor %}
+            </ul>
+        </article>
+    {% endfor %}
+    <a href="/">Back to main page</a>
+{% endblock %}
