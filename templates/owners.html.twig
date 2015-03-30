@@ -3,33 +3,33 @@
     <h1>Owners</h1>
     <table class="owners">
         <thead>
-        <tr>
-            <td>Last Name</td>
-            <td>Name</td>
-            <td>Job</td>
-            <td>Action</td>
-        </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>Name</td>
+                <td>Job</td>
+                <td>Action</td>
+            </tr>
         </thead>
         <tbody>
-        {% for owner in owners %}
-            <tr>
-                <td><input type="text" class="lastName-{{ owner.id }}" value="{{ owner.lastName }}"></td>
-                <td><input type="text" class="name-{{ owner.id }}" value="{{ owner.name }}"></td>
-                <td><input type="text" class="job-{{ owner.id }}" value="{{ owner.job }}"></td>
-                <td>
-                    <input type="button" class="button-edit" data-id="{{ owner.id }}" data-class="Owner" value="Edit">
-                    <input type="button" class="button-delete" data-id="{{ owner.id }}" data-class="Owner" value="Delete">
-                </td>
-            </tr>
-        {% endfor %}
+            {% for owner in owners %}
+                <tr class="row">
+                    <td><input type="text" class="prop" data-propname="lastName" value="{{ owner.lastName }}"></td>
+                    <td><input type="text" class="prop" data-propname="name" value="{{ owner.name }}"></td>
+                    <td><input type="text" class="prop" data-propname="job" value="{{ owner.job }}"></td>
+                    <td>
+                        <input type="button" class="button-edit" data-id="{{ owner.id }}" data-class="Owner" value="Edit">
+                        <input type="button" class="button-delete" data-id="{{ owner.id }}" data-class="Owner" value="Delete">
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
     <div class="new-person">
         <h3>New person: </h3>
-        <p>
-            <label>Last name: <input type="text" class="lastName-new" value=""></label>
-            <label>Name: <input type="text" class="name-new" value=""></label>
-            <label>Job: <input type="text" class="job-new" value=""></label>
+        <p class="row">
+            <label>Last name: <input type="text" class="prop" data-propname="lastName" value=""></label>
+            <label>Name: <input type="text" class="prop" data-propname="name" value=""></label>
+            <label>Job: <input type="text" class="prop" data-propname="job" value=""></label>
             <input type="button" class="button-add-new" data-class="Owner" value="Add new person">
         </p>
     </div>
